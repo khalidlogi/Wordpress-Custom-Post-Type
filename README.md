@@ -2,7 +2,12 @@ https://themefoundation.com/wordpress-meta-boxes-guide/
 
 # Wordpress-Custom-Post-Type
 
-
+## meta box input fields
+- Create a saparate file for html content and include it:
+```php 
+  public function kh_custom_car_content( $post ) {
+    require_once plugin_dir_path(__FILE__).'form.php';
+```
 ## Save the meta box form input
 ```php
 /**
@@ -41,3 +46,54 @@ add_action( 'save_post', 'prfx_meta_save' );
     }
  
 ?>```
+
+
+## Style Fields
+
+
+
+# Custom taxonomie
+```php
+<?php
+
+// Register Custom Taxonomy
+function custom_taxonomy_car_brands() {
+
+	$labels = array(
+		'name'                       => _x( 'Car Brands', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Car Brand', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Car Brands', 'text_domain' ),
+		'all_items'                  => __( 'All Car Brands', 'text_domain' ),
+		'parent_item'                => __( 'Parent Car Brand', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Car Brand:', 'text_domain' ),
+		'new_item_name'              => __( 'New Car Brand Name', 'text_domain' ),
+		'add_new_item'               => __( 'Add New Car Brand', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Car Brand', 'text_domain' ),
+		'update_item'                => __( 'Update Car Brand', 'text_domain' ),
+		'view_item'                  => __( 'View Car Brand', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate car brands with commas', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove car brands', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'text_domain' ),
+		'popular_items'              => __( 'Popular Car Brands', 'text_domain' ),
+		'search_items'               => __( 'Search Car Brands', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+		'no_terms'                   => __( 'No car brands', 'text_domain' ),
+		'items_list'                 => __( 'Car Brands list', 'text_domain' ),
+		'items_list_navigation'      => __( 'Car Brands list navigation', 'text_domain' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'car_brands', array( 'post' ), $args );
+
+}
+add_action( 'init', 'custom_taxonomy_car_brands', 0 );
+
+?>
+```
