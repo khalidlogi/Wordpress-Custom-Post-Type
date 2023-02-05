@@ -33,7 +33,8 @@ tell WordPress which is your single CPT template in your plugin
         return $template;
 
     }
-    ```
+
+```
     
  ###  And for archive template use
    
