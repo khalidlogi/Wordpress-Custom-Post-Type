@@ -1,4 +1,5 @@
 https://themefoundation.com/wordpress-meta-boxes-guide/
+https://code.tutsplus.com/tutorials/a-guide-to-wordpress-custom-post-types-creation-display-and-meta-boxes--wp-27645
 
 # Wordpress-Custom-Post-Type
 
