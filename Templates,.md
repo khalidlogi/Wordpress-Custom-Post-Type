@@ -1,4 +1,4 @@
-tell WordPress which is your single CPT template in your plugin
+Tell WordPress which is your single CPT template in your plugin
 
  
  ```php
