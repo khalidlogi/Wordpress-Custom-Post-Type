@@ -2,37 +2,18 @@ tell WordPress which is your single CPT template in your plugin
 
  
  ```php
- function load_single_ad_template( $template ) {
+ /custom template 
+    add_filter('template_include', array($this,'load_car_template'), 99);
 
-       
 
- global $post;
+  }
 
-    
-
-        if ( 'ads' === $post->post_type && locate_template( ['single-ads.php'] ) !== $template ) {
-
-            /*
-
-             * This is an 'ads' post
-
-             * AND a 'single ad template' is not found on
-
-             * theme or child theme directories, so load it
-
-             * from our plugin directory from inside a /templates folder.
-
-             */
-
-            return YOUR_PLUGIN_DIR_PATH . 'templates/single-ads.php';
-
-        }
-
-    
-
-        return $template;
-
+  function load_car_template($template) {
+    if ( is_singular('car') ) {
+        $template = plugin_dir_path(__FILE__) . '/single-car.php';
     }
+    return $template;
+}
 
 ```
     
